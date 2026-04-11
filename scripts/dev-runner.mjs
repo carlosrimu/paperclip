@@ -303,7 +303,14 @@ async function getMigrationStatusPayload() {
   }
 
   try {
-    return JSON.parse(status.stdout.trim());
+    // pnpm may prepend warnings (e.g. "WARN  Unsupported engine") to stdout.
+    // Find the last line that starts with '{' — that's the JSON payload.
+    const lines = status.stdout.trim().split("\n");
+    const jsonLine = lines.findLast((line) => line.trimStart().startsWith("{"));
+    if (!jsonLine) {
+      throw new Error("No JSON object found in migration-status output");
+    }
+    return JSON.parse(jsonLine.trim());
   } catch (error) {
     process.stderr.write(
       status.stderr ||

@@ -66,6 +66,24 @@ sync-upstream.sh
 # Doc maintenance cursor
 .doc-review-cursor
 
+# Fork-local: graphify (gsd-graphify) artifacts
+graphify-out/
+.planning/graphs/
+.graphify/
+raw/
+
+# Fork-local: claude-mem local config / artifacts
+.claude-mem/
+.claude-mem.json
+claude-mem.log
+claude-mem.db
+
+# Fork-local: crg / code-review-graph artifacts
+.crg/
+.code-review-graph/
+code-review-graph.db
+crg-index.json
+
 # Playwright
 tests/e2e/test-results/
 tests/e2e/playwright-report/

@@ -46,6 +46,23 @@ diagnostics/
 /.idea/
 /.agents/
 
+# Fork-local: defensive privacy guards (do NOT push to upstream)
+# Ignore everything inside .claude/ except the skills already tracked upstream
+.claude/*
+!.claude/skills/
+!.claude/skills/**
+# Local Claude / claude-mem notes anywhere in the tree
+CLAUDE.md
+**/CLAUDE.md
+# Generic local-only / private file patterns
+*.local
+*.local.*
+*-private
+*-private.*
+# Fork-local helper scripts (e.g. upstream sync)
+scripts/sync-upstream.sh
+sync-upstream.sh
+
 # Doc maintenance cursor
 .doc-review-cursor
 
